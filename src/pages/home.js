@@ -1,37 +1,42 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
+import Ktra from "../components/Ktra";
 
-export class home extends Component {
-//   async componentDidMount() {
-//     try {
-//       console.log("object");
-//       const res = await axios.get("/ktra");
-//       console.log(res.data);
-//       const [ktra, setKtra] = useState(res.data);
-//       console.log(ktra);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
+function Home() {
+  const [ktra, setKtra] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get("/ktra");
+        const json = await response.data;
+        setKtra(
+          json.map(item => {
+            return item;
+          })
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
 
-  render() {
-    // let recentKtraMarkup = { ktra } ? (
-    //   { ktra }.map(kt => <p>{kt.body}</p>)
-    // ) : (
-    //   <p>Loading ...</p>
-    // );
-    return (
-      <Grid container spacing={10}>
-        <Grid item sm={8} xs={12}>
-          {recentKtraMarkup}
-        </Grid>
-        <Grid item sm={4} xs={12}>
-          <p>Profile ....</p>
-        </Grid>
+  let recentKtraMarkup = ktra ? (
+    ktra.map(kt => <Ktra key={kt.ktraId} ktra={kt} />)
+  ) : (
+    <p>Loading ...</p>
+  );
+  return (
+    <Grid container spacing={10}>
+      <Grid item sm={8} xs={12}>
+        {recentKtraMarkup}
       </Grid>
-    );
-  }
+      <Grid item sm={4} xs={12}>
+        <p>Profile ....</p>
+      </Grid>
+    </Grid>
+  );
 }
 
-export default home;
+export default Home;
