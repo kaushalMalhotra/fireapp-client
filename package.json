@@ -36,8 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://us-central1-socialkmtra.cloudfunctions.net/api",
   "devDependencies": {
     "eslint-plugin-react-hooks": "^2.3.0"
-  }
+  },
+  "proxy": "https://us-central1-socialkmtra.cloudfunctions.net/api"
 }

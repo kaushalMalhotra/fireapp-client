@@ -24,6 +24,12 @@ const theme = createMuiTheme({
       dark: "#ba000d",
       contrastText: "#000"
     },
+    default: {
+      light: "#ff5252",
+      main: "#ff1744",
+      dark: "#d50000",
+      contrastText: "#ffebee"
+    },
     typography: {
       useNextVariants: true
     }
@@ -34,7 +40,6 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <div className="container">
-        
         <Router>
           <Navbar />
           <Switch>
