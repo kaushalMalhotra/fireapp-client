@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Typography, TextField, Grid } from "@material-ui/core";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { useHistory, Link } from "react-router-dom";
 import AppIcon from "../images/potter.jpg";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -95,10 +95,10 @@ function Login() {
     </Grid>
   );
 }
-Login.propTypes = {
-  // classes: PropTypes.object.isRequired
-  // loginUser: PropTypes.func.isRequired,
-  // user: PropTypes.object.isRequired,
-  // UI: PropTypes.object.isRequired
-};
+// Login.propTypes = {
+//   // classes: PropTypes.object.isRequired
+//   // loginUser: PropTypes.func.isRequired,
+//   // user: PropTypes.object.isRequired,
+//   // UI: PropTypes.object.isRequired
+// };
 export default Login;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import Ktra from "../components/Ktra";
+import Profile from '../components/Profile'
 
 function Home() {
   const [ktra, setKtra] = useState([]);
@@ -33,7 +34,7 @@ function Home() {
         {recentKtraMarkup}
       </Grid>
       <Grid item sm={4} xs={12}>
-        <p>Profile ....</p>
+       <Profile/>
       </Grid>
     </Grid>
   );

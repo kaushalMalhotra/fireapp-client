@@ -3,14 +3,14 @@ const Basictheme = [
     palette: {
       primary: {
         light: "#757ce8",
-        main: "#FFC400",
-        dark: "#002884",
-        contrastText: "#FFC400"
+        main: "#00e676",
+        dark: "#00c853",
+        contrastText: "#212121"
       },
       secondary: {
         light: "#ff7961",
-        main: "#D50000",
-        dark: "#ba000d",
+        main: "#76ff03",
+        dark: "#aeea00",
         contrastText: "#000"
       },
       default: {
@@ -47,6 +47,51 @@ const style = [
     },
     progress: {
       position: "absolute"
+    },
+    paper: {
+      padding: 20
+    },
+    profile: {
+      "& .image-wrapper": {
+        textAlign: "center",
+        position: "relative",
+        "& button": {
+          position: "absolute",
+          top: "90%",
+          left: "70%"
+        }
+      },
+      "& .profile-image": {
+        width: 200,
+        height: 200,
+        objectFit: "cover",
+        maxWidth: "100%",
+        borderRadius: "50%"
+      },
+      "& .profile-details": {
+        textAlign: "center",
+        "& span, svg": {
+          verticalAlign: "middle"
+        },
+        "& a": {
+          color: "#00bcd4"
+        }
+      },
+      "& hr": {
+        border: "none",
+        margin: "0 0 10px 0"
+      },
+      "& svg.button": {
+        "&:hover": {
+          cursor: "pointer"
+        }
+      }
+    },
+    buttons: {
+      textAlign: "center",
+      "& a": {
+        margin: "20px 10px"
+      }
     }
   }
 ];

@@ -1,14 +1,18 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const AuthRoute = ({ component: Component, authenticated, ...rest }) => (
+const AuthRoute = ({ component: Component,...rest }) => {
+  const { authenticated } = useSelector(state => ({
+    authenticated: state.user.authenticated
+  }));
+  return (
   <Route
     {...rest}
-    render={(props) =>
+    render={props =>
       authenticated === true ? <Redirect to="/" /> : <Component {...props} />
     }
-  />
-);
-
+  />);
+};
 
 export default AuthRoute;
