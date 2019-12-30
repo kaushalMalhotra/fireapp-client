@@ -8,7 +8,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/ktra");
+        const response = await axios.get("ktra");
         const json = await response.data;
         setKtra(
           json.map(item => {

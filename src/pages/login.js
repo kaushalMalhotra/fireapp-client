@@ -1,65 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { Button, Typography, TextField, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import { useHistory, Link } from "react-router-dom";
 import AppIcon from "../images/potter.jpg";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { style } from "../helpers/MuiStyleCss";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../redux/actions/UserActions";
 
-const useStyles = makeStyles(theme => ({
-  form: {
-    textAlign: "center",
-    margin: 10
-  },
-  image: {
-    margin: "20px auto 20px auto",
-    height: "100px"
-  },
-  pageTitle: {
-    margin: "10px auto 10px auto"
-  },
-  textField: {
-    margin: "10px auto 10px auto"
-  },
-  button: {
-    marginTop: "10px"
-  }
-}));
-
+const useStyles = makeStyles(...style);
 function Login() {
   const classes = useStyles();
-  const theme = useTheme();
   let history = useHistory();
   const [LoginForm, setLoginForm] = useState({ errors: {} });
+  const {
+    UI: { loading, errors }
+  } = useSelector(state => ({
+    user: state.user,
+    UI: state.UI
+  }));
+  const dispatch = useDispatch();
   const handleSubmit = e => {
-    e.preventDefault();
-    try {
-      setLoginForm({ loading: true });
-      const userData = {
-        email: LoginForm.email,
-        password: LoginForm.password
-      };
-      // const res = await axios.post("/login", userData);
-      // const data = await res.data;
-      axios.post("/login", userData).then(res => {
-        console.log(res.data);
-        setLoginForm({ loading: false });
-        history.push("/");
-      });
-      // console.log(data);
-    } catch (error) {
-      setLoginForm({
-        errors: error.response.data,
-        loading: false
-      });
-    }
+    if (e) e.preventDefault();
+    const userData = {
+      email: LoginForm.email || "",
+      password: LoginForm.password || ""
+    };
+    dispatch(loginUser(userData, history));
   };
+
   const handleChange = e =>
     setLoginForm({
       ...LoginForm,
       [e.currentTarget.name]: e.currentTarget.value
     });
-  const { errors, loading } = LoginForm;
   return (
     <Grid container className={classes.form}>
       <Grid item sm />
@@ -70,6 +45,7 @@ function Login() {
         </Typography>
         <form noValidate onSubmit={e => handleSubmit(e)}>
           <TextField
+            required={true}
             id="email"
             name="email"
             type="email"
@@ -77,12 +53,13 @@ function Login() {
             color="secondary"
             className={classes.textfield}
             value={LoginForm.email || ""}
-            // helperText={errors.Email}
-            // error={errors.Email ? true : false}
+            helperText={errors.email}
+            error={errors.email ? true : false}
             onChange={handleChange}
             fullWidth
           />
           <TextField
+            required={true}
             id="password"
             name="password"
             type="password"
@@ -90,19 +67,28 @@ function Login() {
             color="secondary"
             className={classes.textfield}
             value={LoginForm.password || ""}
-            // helperText={errors.password}
-            // error={errors.password ? true : false}
+            helperText={errors.password}
+            error={errors.password ? true : false}
             onChange={handleChange}
             fullWidth
           />
+          {/* {errors.general && (<Typography variant ="body2" className={classes.customError}>{errors.general}</Typography>)} */}
           <Button
             type="submit"
             variant="outlined"
             color="secondary"
             className={classes.button}
+            disabled={loading}
           >
             Login
+            {loading && (
+              <CircularProgress size={30} className={classes.progress} />
+            )}
           </Button>
+          <small>
+            <br /> Don't have an Account ? Sign Up Now{" "}
+            <Link to="/signup">Here</Link>
+          </small>
         </form>
       </Grid>
       <Grid item sm />
@@ -111,5 +97,8 @@ function Login() {
 }
 Login.propTypes = {
   // classes: PropTypes.object.isRequired
+  // loginUser: PropTypes.func.isRequired,
+  // user: PropTypes.object.isRequired,
+  // UI: PropTypes.object.isRequired
 };
 export default Login;
