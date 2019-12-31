@@ -3,8 +3,8 @@ const Basictheme = [
     palette: {
       primary: {
         light: "#757ce8",
-        main: "#00e676",
-        dark: "#00c853",
+        main: "#ffc107",
+        dark: "#ffca28",
         contrastText: "#212121"
       },
       secondary: {

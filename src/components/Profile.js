@@ -13,7 +13,7 @@ import {
   Tooltip
 } from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
-import { LocationOn, CalendarToday, KeyboardReturn } from "@material-ui/icons/";
+import { LocationOn, CalendarToday, KeyboardReturn } from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";
 import EditIcon from "@material-ui/icons/Edit";
 import { style } from "../helpers/MuiStyleCss";

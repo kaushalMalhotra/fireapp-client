@@ -75,7 +75,7 @@ function Login() {
           {/* {errors.general && (<Typography variant ="body2" className={classes.customError}>{errors.general}</Typography>)} */}
           <Button
             type="submit"
-            variant="outlined"
+            variant="contained"
             color="secondary"
             className={classes.button}
             disabled={loading}
