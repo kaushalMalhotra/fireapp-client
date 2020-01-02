@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postKtra, clearErrors } from "../redux/actions/DataActions";
-import { style } from "../helpers/MuiStyleCss";
-import MyBtn from "../helpers/MuiBtn";
+import { postKtra, clearErrors } from "../../redux/actions/DataActions";
+import { style } from "../../helpers/MuiStyleCss";
+import MyBtn from "../../helpers/MuiBtn";
 
 // MUI
 import { makeStyles } from "@material-ui/core/styles";

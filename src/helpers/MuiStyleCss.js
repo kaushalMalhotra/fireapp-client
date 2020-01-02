@@ -19,7 +19,7 @@ const Basictheme = [
         dark: "#d50000",
         contrastText: "#ffebee"
       },
-      tertiary:{
+      tertiary: {
         light: "#ef5350",
         main: "#f44336",
         dark: "#d50000",
@@ -37,7 +37,7 @@ const style = [
     card: {
       display: "flex",
       margin: 10,
-      position:"relative"
+      position: "relative"
     },
     details: {
       display: "flex",

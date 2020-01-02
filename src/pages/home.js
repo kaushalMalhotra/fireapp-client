@@ -1,7 +1,7 @@
 import React, {  useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import Ktra from "../components/Ktra";
-import Profile from "../components/Profile";
+import Ktra from "../components/ktra/Ktra";
+import Profile from "../components/profile/Profile";
 import { getKtras } from "../redux/actions/DataActions";
 import { useSelector, useDispatch } from "react-redux";
 

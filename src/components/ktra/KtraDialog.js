@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getSingleKtra } from "../redux/actions/DataActions";
+import { getSingleKtra } from "../../redux/actions/DataActions";
 import { Link } from "react-router-dom";
-import { style } from "../helpers/MuiStyleCss";
-import MyBtn from "../helpers/MuiBtn";
-
+import { style } from "../../helpers/MuiStyleCss";
+import { makeStyles } from "@material-ui/core/styles";
+import MyBtn from "../../helpers/MuiBtn";
+import Comments from "./Comments";
 // Dayjs
 import dayjs from "dayjs";
 // import relativeTime from "dayjs/plugin/relativeTime";
 
 // MUI
-import { makeStyles } from "@material-ui/core/styles";
 // import Button from "@material-ui/core/Button";
 // import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -29,10 +29,6 @@ import LikeButton from "./LikeButton";
 
 const useStyles = makeStyles({
   ...style,
-  invisibleSepartor: {
-    border: "none",
-    margin: "4px"
-  },
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -54,9 +50,18 @@ const useStyles = makeStyles({
     textAlign: "center",
     marginTop: 50,
     marginBottom: 50
+  },
+  invisibleSeparator: {
+    border: "none",
+    margin: "4px"
+  },
+  visibleSeparator: {
+    width: "100%",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
+    marginBottom: "20px"
   }
 });
-export default function KtraDialog({ ktraIdSingle, userHandle }) {
+export default function KtraDialog({ ktraIdSingle }) {
   const classes = useStyles();
   let dispatch = useDispatch();
   const [state, setState] = useState({
@@ -64,7 +69,15 @@ export default function KtraDialog({ ktraIdSingle, userHandle }) {
   });
   const {
     UI: { loading },
-    ktra: { ktraId, body, createdAt, likeCount, commentCount, userImage, user }
+    ktra: {
+      body,
+      createdAt,
+      likeCount,
+      commentCount,
+      userImage,
+      user,
+      comments
+    }
   } = useSelector(state => ({
     UI: state.UI,
     ktra: state.data.ktra
@@ -90,7 +103,7 @@ export default function KtraDialog({ ktraIdSingle, userHandle }) {
       <CircularProgress thickness={1} size={200} />
     </div>
   ) : (
-    <Grid container spacing={15}>
+    <Grid container spacing={10}>
       <Grid item sm={5}>
         <img
           src={userImage}
@@ -107,20 +120,19 @@ export default function KtraDialog({ ktraIdSingle, userHandle }) {
         >
           @{user}
         </Typography>
-        <hr className={classes.invisibleSepartor} />
+        <hr className={classes.invisibleSeparator} />
         <Typography variant="body2" color="textSecondary">
           {dayjs(createdAt).format("h:mm a,MMMM DD YYYY")}
         </Typography>
-        <hr className={classes.invisibleSepartor} />
+        <hr className={classes.invisibleSeparator} />
         <Typography variant="body1">{body}</Typography>
-        <LikeButton ktraId={ktraIdSingle}/>
+        <LikeButton ktraId={ktraIdSingle} />
         <span>{likeCount} Likes</span>
-        <MyBtn
-          title="Comments"
-          child={<ChatIcon />}
-        />
+        <MyBtn title="Comments" child={<ChatIcon />} />
         <span>{commentCount} Comments</span>
       </Grid>
+      <hr className={classes.visibleSeparator} />
+      <Comments comments={comments} />
     </Grid>
   );
   return (

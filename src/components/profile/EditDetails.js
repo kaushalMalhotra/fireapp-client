@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editUserDetails } from "../redux/actions/UserActions";
+import { editUserDetails } from "../../redux/actions/UserActions";
 // import { Link } from "react-router-dom";
 // MUI
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,8 +15,8 @@ import {
   DialogActions
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
-import { style } from "../helpers/MuiStyleCss";
-import MyBtn from "../helpers/MuiBtn";
+import { style } from "../../helpers/MuiStyleCss";
+import MyBtn from "../../helpers/MuiBtn";
 // Redux
 const useStyles = makeStyles({ ...style, button: { float: "right" } });
 export default function EditDetails() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { uploadImage, logoutUser } from "../redux/actions/UserActions";
+import { uploadImage, logoutUser } from "../../redux/actions/UserActions";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
@@ -11,8 +11,8 @@ import MuiLink from "@material-ui/core/Link";
 import { LocationOn, CalendarToday, KeyboardReturn } from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";
 import EditIcon from "@material-ui/icons/Edit";
-import { style } from "../helpers/MuiStyleCss";
-import MyBtn from "../helpers/MuiBtn";
+import { style } from "../../helpers/MuiStyleCss";
+import MyBtn from "../../helpers/MuiBtn";
 const useStyles = makeStyles(...style);
 export default function Profile() {
   let dispatch = useDispatch();

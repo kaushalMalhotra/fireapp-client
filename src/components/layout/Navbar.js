@@ -4,11 +4,11 @@ import ToolBar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import MyBtn from "../helpers/MuiBtn";
-import AddIcon from "@material-ui/icons/Add";
+import MyBtn from "../../helpers/MuiBtn";
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
-import PostKtra from './PostKtra'
+import PostKtra from '../ktra/PostKtra'
+
 export default function Navbar() {
   const { authenticated } = useSelector(state => ({
     authenticated: state.user.authenticated

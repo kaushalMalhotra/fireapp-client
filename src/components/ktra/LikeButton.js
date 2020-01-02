@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { likeKtra, unlikeKtra } from "../redux/actions/DataActions";
-import MyBtn from "../helpers/MuiBtn";
+import { likeKtra, unlikeKtra } from "../../redux/actions/DataActions";
+import MyBtn from "../../helpers/MuiBtn";
 import { Link } from "react-router-dom";
 
 // Icons

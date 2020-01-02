@@ -6,12 +6,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import Typography from "@material-ui/core/Typography";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
-// import FavouriteBorder from "@material-ui/icons/FavoriteBorder";
-// import FavouriteIcon from "@material-ui/icons/Favorite";
-import { style } from "../helpers/MuiStyleCss";
-import MyBtn from "../helpers/MuiBtn";
+import { style } from "../../helpers/MuiStyleCss";
+import MyBtn from "../../helpers/MuiBtn";
 import { useDispatch } from "react-redux";
-import { deleteKtra } from "../redux/actions/DataActions";
+import { deleteKtra } from "../../redux/actions/DataActions";
 
 const useStyles = makeStyles({
     deleteButton:{
