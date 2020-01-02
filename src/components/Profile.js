@@ -1,23 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import dayjs from "dayjs";
+import { uploadImage, logoutUser } from "../redux/actions/UserActions";
 import { Link } from "react-router-dom";
-import EditDetails from './EditDetails'
+import dayjs from "dayjs";
+import EditDetails from "./EditDetails";
 // MUI
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Button,
-  Typography,
-  Paper,
-  IconButton,
-  Tooltip
-} from "@material-ui/core";
+import { Button, Typography, Paper } from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
 import { LocationOn, CalendarToday, KeyboardReturn } from "@material-ui/icons";
 import LinkIcon from "@material-ui/icons/Link";
 import EditIcon from "@material-ui/icons/Edit";
 import { style } from "../helpers/MuiStyleCss";
-import { uploadImage, logoutUser } from "../redux/actions/UserActions";
+import MyBtn from "../helpers/MuiBtn";
 const useStyles = makeStyles(...style);
 export default function Profile() {
   let dispatch = useDispatch();
@@ -56,11 +51,13 @@ export default function Profile() {
               onChange={handleImageChange}
               hidden="hidden"
             />
-            <Tooltip title="Edit Profile Picture" placement="top">
-              <IconButton onClick={handleEditPicture} className="button">
-                <EditIcon color="primary" />
-              </IconButton>
-            </Tooltip>
+            <MyBtn
+              title="Edit Profile Picture"
+              placement="top"
+              onClick={handleEditPicture}
+              btnClass="button"
+              child={<EditIcon color="primary" />}
+            />
           </div>
           <hr />
           <MuiLink
@@ -92,11 +89,12 @@ export default function Profile() {
           <CalendarToday color="primary" />
           <span> Joined {dayjs(createdAt).format("MMM YYYY")}</span>
         </div>
-        <Tooltip title="Logout" placement="top">
-          <IconButton align="left" onClick={handleLogout}>
-            <KeyboardReturn color="primary" />
-          </IconButton>
-        </Tooltip>
+        <MyBtn
+          title="Logout"
+          placement="top"
+          onClick={handleLogout}
+          child={<KeyboardReturn color="primary" />}
+        />
         <EditDetails />
       </Paper>
     ) : (

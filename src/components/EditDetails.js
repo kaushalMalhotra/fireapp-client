@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import { style } from "../helpers/MuiStyleCss";
+import MyBtn from "../helpers/MuiBtn";
 // Redux
 const useStyles = makeStyles({ ...style, button: { float: "right" } });
 export default function EditDetails() {
@@ -59,11 +60,13 @@ export default function EditDetails() {
   };
   return (
     <React.Fragment>
-      <Tooltip title="Edit Details" placement="top">
-        <IconButton onClick={handleOpen} className={classes.button}>
-          <EditIcon color="primary" />
-        </IconButton>
-      </Tooltip>
+       <MyBtn
+          title="Edit Details"
+          placement="top"
+          onClick={handleOpen}
+          btnClass={classes.button}
+          child={<EditIcon color="primary" />}
+        />
       <Dialog open={state.open} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>Edit Your Details</DialogTitle>
         <DialogContent>

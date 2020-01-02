@@ -8,8 +8,7 @@ import MyBtn from "../helpers/MuiBtn";
 import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
-import { Tooltip, IconButton } from "@material-ui/core";
-
+import PostKtra from './PostKtra'
 export default function Navbar() {
   const { authenticated } = useSelector(state => ({
     authenticated: state.user.authenticated
@@ -19,19 +18,16 @@ export default function Navbar() {
       <ToolBar className="nav-container">
         {authenticated ? (
           <Fragment>
-            <MyBtn title="Home" child={<AddIcon color="primary" />} />
+            <PostKtra/>
             <MyBtn
               title="Home"
               child={
                 <Link to="/">
-                  <HomeIcon color="primary" />
+                  <HomeIcon />
                 </Link>
               }
             />
-            <MyBtn
-              title="Notifications"
-              child={<Notifications color="primary" />}
-            />
+            <MyBtn title="Notifications" child={<Notifications />} />
           </Fragment>
         ) : (
           <Fragment>

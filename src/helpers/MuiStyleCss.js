@@ -19,6 +19,12 @@ const Basictheme = [
         dark: "#d50000",
         contrastText: "#ffebee"
       },
+      tertiary:{
+        light: "#ef5350",
+        main: "#f44336",
+        dark: "#d50000",
+        contrastText: "#ffebee"
+      },
       typography: {
         useNextVariants: true
       }
@@ -28,6 +34,21 @@ const Basictheme = [
 
 const style = [
   {
+    card: {
+      display: "flex",
+      margin: 10,
+      position:"relative"
+    },
+    details: {
+      display: "flex",
+      flexDirection: "column"
+    },
+    content: {
+      flex: "1 0 auto"
+    },
+    cover: {
+      width: 150
+    },
     form: {
       textAlign: "center",
       margin: 10
